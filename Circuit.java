@@ -5,10 +5,10 @@ class Motorcycle {
     public int fuel;
     public int maxFuel;
 
-    public Motorcycle(String name, int speed, int fuel, int maxFuel) {
+    public Motorcycle(String name, int speed, int maxFuel) {
         this.name    = name;
         this.speed   = speed;
-        this.fuel    = fuel;
+        //this.fuel    = fuel;
         this.maxFuel = maxFuel;
     }
 
@@ -16,7 +16,7 @@ class Motorcycle {
         if(fuel<=0){
             this.fuel = 0;
         }else if(fuel>maxFuel){
-            fuel = this.maxFuel;
+            this.fuel = this.maxFuel;
         }else{
             this.fuel = fuel;
         }
@@ -85,20 +85,29 @@ public class Circuit {
     }
 
     public static void main(String[] args) {
-        Motorcycle m1 = new Motorcycle("Andrea Dovizioso", 30, 135, 1000);
-        Motorcycle m2 = new Motorcycle("Marc Marquez", 25, 120, 1000);
+        Motorcycle m1 = new Motorcycle("Andrea Dovizioso", 30, 1000);
+        m1.setFuel(100);
+        Motorcycle m2 = new Motorcycle("Marc Marquez", 25, 1000);
+        m2.setFuel(120);
         Circuit c1     = new Circuit("Losail international Circuit", 120, 1);
         c1.addMotorcylce(m1);
         c1.addMotorcylce(m2);
         c1.doRace();
         System.out.println("");
-        Motorcycle m3 = new Motorcycle("Maverick Vinales", 40, 70, 150);
-        Motorcycle m4 = new Motorcycle("Joan Mir", 25, 45, 225);
-        Motorcycle m5 = new Motorcycle("Johann Zarco", 50, 10, 200);
+        Motorcycle m3 = new Motorcycle("Maverick Vinales", 40, 150);
+        m3.setFuel(70);
+        Motorcycle m4 = new Motorcycle("Joan Mir", 25, 225);
+        m4.setFuel(45);
+        Motorcycle m5 = new Motorcycle("Johann Zarco", 50, 200);
+        m5.setFuel(10);
+        Motorcycle m6 = new Motorcycle("Rossi", 30, 10);
+        m6.setFuel(-1);
         Circuit c2    = new Circuit("TT Circuit Assen", 10, 2);
+        //c2.refuel(2);
         c2.addMotorcylce(m3);
         c2.addMotorcylce(m4);
         c2.addMotorcylce(m5);
+        c2.addMotorcylce(m6);
         c2.doRace();
     }
 }
